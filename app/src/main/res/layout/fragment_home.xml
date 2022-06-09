@@ -118,6 +118,67 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lytSeller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/worksans_medium"
+                                android:gravity="start"
+                                android:paddingVertical="@dimen/dimen_5dp"
+                                android:text="@string/brand_partners"
+                                android:textColor="@color/txt_color"
+                                android:textSize="@dimen/_13ssp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMoreSeller"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/worksans_medium"
+                                android:padding="5dp"
+                                android:text="See All >>"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_10ssp"
+                                android:textStyle="bold" />
+
+                        </RelativeLayout>
+
+                        <onealldigital.nizara.in.helper.WrapContentViewPager
+                            android:id="@+id/brand_pager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sectionView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dimen_5dp"
+                    android:visibility="visible" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_10dp"
@@ -217,69 +278,12 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lytSeller"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dimen_10dp"
-                            >
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/worksans_medium"
-                                android:gravity="start"
-                                android:paddingVertical="@dimen/dimen_5dp"
-                                android:text="@string/brand_partners"
-                                android:textColor="@color/txt_color"
-                                android:textSize="@dimen/_13ssp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvMoreSeller"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:fontFamily="@font/worksans_medium"
-                                android:padding="5dp"
-                                android:text="See All >>"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_10ssp"
-                                android:textStyle="bold" />
-
-                        </RelativeLayout>
-
-                        <onealldigital.nizara.in.helper.WrapContentViewPager
-                            android:id="@+id/brand_pager"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/sectionView"
+                    android:id="@+id/sectionView1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/dimen_5dp"
                     android:visibility="visible" />
-
-
-
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

@@ -48,6 +48,7 @@ import onealldigital.nizara.in.adapter.BrandsAdapter;
 import onealldigital.nizara.in.adapter.CategoryAdapter;
 import onealldigital.nizara.in.adapter.OfferAdapter;
 import onealldigital.nizara.in.adapter.SectionAdapter;
+import onealldigital.nizara.in.adapter.SectionAdapter1;
 import onealldigital.nizara.in.adapter.SliderAdapter;
 import onealldigital.nizara.in.helper.ApiConfig;
 import onealldigital.nizara.in.helper.Constant;
@@ -65,7 +66,7 @@ import onealldigital.nizara.in.model.Slider;
 public class HomeFragment extends Fragment implements ClickHome {
 
     public Session session;
-    public static ArrayList<Category> categoryArrayList, sectionList;
+    public static ArrayList<Category> categoryArrayList, sectionList,sectionList2;
     public static ArrayList<Seller> sellerArrayList;
     public static ArrayList<Brand> brandArrayList;
     ArrayList<Slider> sliderArrayList;
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment implements ClickHome {
     int timerDelay = 0, timerWaiting = 0;
     private CategoryAdapter categoryAdapter;
 
-    RecyclerView categoryRecyclerView, sectionView, offerView;
+    RecyclerView categoryRecyclerView, sectionView, offerView, sectionView1;
     ViewPager mPager;
     WrapContentViewPager brandPager;
     LinearLayout mMarkersLayout;
@@ -119,6 +120,10 @@ public class HomeFragment extends Fragment implements ClickHome {
         sectionView = root.findViewById(R.id.sectionView);
         sectionView.setLayoutManager(new LinearLayoutManager(getContext()));
         sectionView.setNestedScrollingEnabled(false);
+
+        sectionView1 = root.findViewById(R.id.sectionView1);
+        sectionView1.setLayoutManager(new LinearLayoutManager(getContext()));
+        sectionView1.setNestedScrollingEnabled(false);
 
         offerView = root.findViewById(R.id.offerView);
         offerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -461,8 +466,9 @@ public class HomeFragment extends Fragment implements ClickHome {
 
     public void SectionProductRequest(JSONArray jsonArray) {  //json request for product search
         sectionList = new ArrayList<>();
+        sectionList2 = new ArrayList<>();
         try {
-            for (int j = 0; j < jsonArray.length(); j++) {
+            for (int j = 0; j < (jsonArray.length()-1); j++) {
                 Category section = new Category();
                 JSONObject jsonObject = jsonArray.getJSONObject(j);
                 section.setName(jsonObject.getString(Constant.TITLE));
@@ -476,6 +482,21 @@ public class HomeFragment extends Fragment implements ClickHome {
             sectionView.setVisibility(View.VISIBLE);
             SectionAdapter sectionAdapter = new SectionAdapter(getContext(), getActivity(), sectionList);
             sectionView.setAdapter(sectionAdapter);
+            for (int j = 2; j < jsonArray.length(); j++) {
+                Category section = new Category();
+                JSONObject jsonObject = jsonArray.getJSONObject(j);
+                section.setName(jsonObject.getString(Constant.TITLE));
+                section.setId(jsonObject.getString(Constant.ID));
+                section.setStyle(jsonObject.getString(Constant.SECTION_STYLE));
+                section.setSubtitle(jsonObject.getString(Constant.SHORT_DESC));
+                JSONArray productArray = jsonObject.getJSONArray(Constant.PRODUCTS);
+                section.setProductList(ApiConfig.GetProductList(productArray));
+                sectionList2.add(section);
+            }
+            sectionView1.setVisibility(View.VISIBLE);
+            SectionAdapter1 sectionAdapter1 = new SectionAdapter1(getContext(), getActivity() ,sectionList2);
+            sectionView1.setAdapter(sectionAdapter1);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

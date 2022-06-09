@@ -23,15 +23,14 @@ import onealldigital.nizara.in.helper.Constant;
 import onealldigital.nizara.in.model.Category;
 
 
-public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionHolder> {
+public class SectionAdapter1 extends RecyclerView.Adapter<SectionAdapter1.SectionHolder> {
 
     public final ArrayList<Category> sectionList;
     public final Activity activity;
     final Context context;
     int Counter=0;
-    int co=0;
 
-    public SectionAdapter(Context context, Activity activity, ArrayList<Category> sectionList) {
+    public SectionAdapter1(Context context, Activity activity, ArrayList<Category> sectionList) {
         this.context = context;
         this.activity = activity;
         this.sectionList = sectionList;
@@ -69,7 +68,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionH
                     holder1.recyclerView.setAdapter(adapter3);
                     break;
             }
-            holder1.tvMore.setText("Sell All >>");
+
             holder1.tvMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -84,7 +83,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionH
                     MainActivity.fm.beginTransaction().add(R.id.container, fragment).addToBackStack(null).commit();
                 }
             });
-        }else {
         }
     }
 
@@ -115,6 +113,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionH
             tvMore = itemView.findViewById(R.id.tvMore);
             recyclerView = itemView.findViewById(R.id.recyclerView);
             relativeLayout = itemView.findViewById(R.id.relativeLayout);
+
         }
     }
 
