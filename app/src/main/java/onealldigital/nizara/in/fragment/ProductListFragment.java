@@ -434,7 +434,7 @@ public class ProductListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.toolbar_sort) {
+        if (item.getItemId() == R.id.toolbar_sortproduct) {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(activity.getResources().getString(R.string.filterby));
             builder.setSingleChoiceItems(Constant.filtervalues, filterIndex, (dialog, item1) -> {
@@ -466,7 +466,8 @@ public class ProductListFragment extends Fragment {
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
-        menu.findItem(R.id.toolbar_sort).setVisible(isSort);
+        menu.findItem(R.id.toolbar_sort).setVisible(false);
+        menu.findItem(R.id.toolbar_sortproduct).setVisible(isSort);
         menu.findItem(R.id.toolbar_search).setVisible(false);
         menu.findItem(R.id.toolbar_cart).setIcon(ApiConfig.buildCounterDrawable(Constant.TOTAL_CART_ITEM, activity));
 

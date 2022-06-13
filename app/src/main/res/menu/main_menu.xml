@@ -17,6 +17,14 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/toolbar_sortproduct"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/filterby"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+
+    <item
         android:id="@+id/toolbar_sortWithdrawl"
         android:icon="@drawable/ic_sort"
         android:title="@string/filterby"

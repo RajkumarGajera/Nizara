@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Constant {
     //MODIFICATION PART
 
-    public static final String MAINBASEUrl = "https://nizara.in/admin/"; //Admin panel url
+    public static final String MAINBASEUrl = "https://www.nizara.in/admin/"; //Admin panel url
 
     //set your jwt secret key here...key must same in PHP and Android
     public static final String JWT_KEY = "biki1626";

@@ -37,6 +37,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import onealldigital.nizara.in.R;
+import onealldigital.nizara.in.activity.MainActivity;
 import onealldigital.nizara.in.adapter.TrackerAdapter;
 import onealldigital.nizara.in.helper.ApiConfig;
 import onealldigital.nizara.in.helper.Constant;
@@ -206,14 +207,17 @@ public class CurrentOrderFragment extends Fragment {
                                         int year = Integer.parseInt(sp[0]);
                                         int month = Integer.parseInt(sp[1]);
                                         int day = Integer.parseInt(sp[2]);
-                                        System.out.println(day+"==="+month+"==="+year);
-                                        System.out.println(Start_day+"==="+Start_month+"==="+Start_year);
-                                        System.out.println(End_day+"==="+End_month+"==="+End_year);
+                                        System.out.println(day + "===" + month + "===" + year);
+                                        System.out.println(Start_day + "===" + Start_month + "===" + Start_year);
+                                        System.out.println(End_day + "===" + End_month + "===" + End_year);
+                                        String productdate = year + "-" + month + "-" + day;
+                                        String startdate = Start_year + "-" + Start_month + "-" + Start_day;
+                                        String enddate = End_year + "-" + End_month + "-" + End_day;
                                         if (Start_date == null && End_date == null) {
 
                                         } else {
                                             if (Start_year <= year && End_year >= year) {
-                                                if (Start_month <= month || End_month >= month) {
+                                                if (Start_month <= month && End_month >= month) {
                                                     if (Start_day <= day && End_day >= day) {
                                                         System.out.println("Hello");
                                                     } else {
@@ -324,12 +328,12 @@ public class CurrentOrderFragment extends Fragment {
                     }
 
                 }
-                System.out.println(Calendar.DAY_OF_WEEK_IN_MONTH+1);
-                System.out.println(Calendar.DAY_OF_MONTH+1);
-                Start_date="1-1-1900";
-                End_date=String.valueOf((Calendar.DAY_OF_WEEK_IN_MONTH+1)+"-"+(Calendar.DAY_OF_MONTH+1)+"-"+"2022");
-                filterDate filterDate= new filterDate(Start_date,End_date);
-                myRef.child("Filterdate").child(User_name).child(User_name).setValue(filterDate);
+//                System.out.println(Calendar.SECOND);
+//                System.out.println(Calendar.DAY_OF_MONTH+1);
+//                Start_date="1-1-1900";
+//                End_date=String.valueOf((Calendar.SECOND)+"-"+(Calendar.DAY_OF_MONTH+1)+"-"+"2022");
+//                filterDate filterDate= new filterDate(Start_date,End_date);
+//                myRef.child("Filterdate").child(User_name).child(User_name).setValue(filterDate);
             }
         }, activity, Constant.ORDERPROCESS_URL, params, false);
     }
@@ -337,6 +341,7 @@ public class CurrentOrderFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        MainActivity.showHideSearchBar(false);
         hideKeyboard();
     }
 

@@ -352,10 +352,10 @@ public class OrderHistoryFragment extends Fragment {
 
                 }
 
-                System.out.println(Calendar.DAY_OF_WEEK_IN_MONTH+1);
+                System.out.println(Calendar.SECOND);
                 System.out.println(Calendar.DAY_OF_MONTH+1);
                 Start_date="1-1-1900";
-                End_date=String.valueOf((Calendar.DAY_OF_WEEK_IN_MONTH+1)+"-"+(Calendar.DAY_OF_MONTH+1)+"-"+"2022");
+                End_date=String.valueOf((Calendar.SECOND)+"-"+(Calendar.DAY_OF_MONTH+1)+"-"+"2022");
                 filterDate filterDate= new filterDate(Start_date,End_date);
                 myRef.child("Filterdate").child(User_name).child(User_name).setValue(filterDate);
 

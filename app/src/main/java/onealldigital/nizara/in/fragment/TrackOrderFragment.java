@@ -1,5 +1,7 @@
 package onealldigital.nizara.in.fragment;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -18,10 +21,14 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
+
+import org.greenrobot.eventbus.EventBus;
+
 import onealldigital.nizara.in.R;
 import onealldigital.nizara.in.activity.MainActivity;
 import onealldigital.nizara.in.adapter.TrackOrderAdapter;
 import onealldigital.nizara.in.adapter.TrackerAdapter;
+import onealldigital.nizara.in.helper.Constant;
 import onealldigital.nizara.in.model.CurrentOrder;
 
 public class TrackOrderFragment extends Fragment {
@@ -31,24 +38,26 @@ public class TrackOrderFragment extends Fragment {
     private String[] tabTitles =  {"Current Order", "Order History"};
     private TrackOrderAdapter adapter;
     Activity activity;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_track_order, container, false);
+        view = inflater.inflate(R.layout.fragment_track_order, container, false);
 
         tab = view.findViewById(R.id.tabs_layout);
         viewPager = view.findViewById(R.id.view_pager);
 
         setHasOptionsMenu(true);
 
-        adapter = new TrackOrderAdapter(requireActivity());
+        adapter = new TrackOrderAdapter(getActivity());
 
         viewPager.setAdapter(adapter);
 
         new TabLayoutMediator(tab, viewPager, (tab, position) -> {
             tab.setText(tabTitles[position]);
         }).attach();
+
 
         return view;
     }
@@ -67,4 +76,13 @@ public class TrackOrderFragment extends Fragment {
         super.onResume();
         MainActivity.showHideSearchBar(false);
     }
+
+    @Override
+    public void onPause() {
+        Intent intent = new Intent(getContext(),MainActivity.class);
+        getActivity().startActivity(intent);
+        super.onPause();
+
+    }
+
 }

@@ -1047,22 +1047,22 @@ public class PaymentFragment extends Fragment implements PaytmPaymentTransaction
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        Constant.TOOLBAR_TITLE = getString(R.string.payment);
-        activity.invalidateOptionsMenu();
-        hideKeyboard();
-    }
-
-    public void hideKeyboard() {
-        try {
-            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
-            assert inputMethodManager != null;
-            inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
-        } catch (Exception e) {
-            e.printStackTrace();
+        public void onResume() {
+            super.onResume();
+            Constant.TOOLBAR_TITLE = getString(R.string.payment);
+            activity.invalidateOptionsMenu();
+            hideKeyboard();
         }
-    }
+
+        public void hideKeyboard() {
+            try {
+                InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+                assert inputMethodManager != null;
+                inputMethodManager.hideSoftInputFromWindow(root.getApplicationWindowToken(), 0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {

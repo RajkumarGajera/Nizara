@@ -138,20 +138,23 @@ public class Filterdates extends Fragment {
                 String Start_date,End_date;
                 System.out.println(start_txt.getText());
                 System.out.println(end_txt.getText());
-                Bundle bundle = new Bundle();
-                bundle.putString("Start_date",start_txt.getText().toString());
-                bundle.putString("End_date",end_txt.getText().toString());
-                String User_name=session.getData(Constant.NAME);
+                if(start_txt.getText().equals("") || end_txt.getText().equals("")){
+                    Toast.makeText(getContext(),"Enter Date Propley",Toast.LENGTH_SHORT).show();
+                }else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("Start_date", start_txt.getText().toString());
+                    bundle.putString("End_date", end_txt.getText().toString());
+                    String User_name = session.getData(Constant.NAME);
 
 
-                Start_date=start_txt.getText().toString();
-                End_date=end_txt.getText().toString();
-                filterDate filterDate= new filterDate(Start_date,End_date);
-                myRef.child("Filterdate").child(User_name).child(User_name).setValue(filterDate);
-                TrackOrderFragment trackOrderFragment=new TrackOrderFragment();
-                trackOrderFragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.container,trackOrderFragment).commit();
-
+                    Start_date = start_txt.getText().toString();
+                    End_date = end_txt.getText().toString();
+                    filterDate filterDate = new filterDate(Start_date, End_date);
+                    myRef.child("Filterdate").child(User_name).child(User_name).setValue(filterDate);
+                    TrackOrderFragment trackOrderFragment = new TrackOrderFragment();
+                    trackOrderFragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.container, trackOrderFragment).commit();
+                }
             }
         });
 
